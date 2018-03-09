@@ -28,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
                 IntentIntegrator integrator = new IntentIntegrator(activity);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
                 integrator.setPrompt("Scan");
-                integrator.setOrientationLocked(false);
+                integrator.setOrientationLocked(true);
                 integrator.setCameraId(0);
-                integrator.setBeepEnabled(false);
+                integrator.setBeepEnabled(true);
                 integrator.setBarcodeImageEnabled(false);
+                integrator.setCaptureActivity(CaptureActivityPortrait.class);
                 integrator.initiateScan();
             }
         });
