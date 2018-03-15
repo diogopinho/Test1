@@ -2,9 +2,6 @@ package com.example.diogopinho.test1;
 
 import android.support.annotation.NonNull;
 
-/**
- * Created by João Cardoso on 13/03/2018.
- */
 
 public class Arc implements Comparable<Arc> {
     private Node node1, node2;

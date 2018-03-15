@@ -2,10 +2,6 @@ package com.example.diogopinho.test1;
 
 import java.util.ArrayList;
 
-/**
- * Created by João Cardoso on 13/03/2018.
- */
-
 public class Node {
 
     private String label;
@@ -13,12 +9,12 @@ public class Node {
     private String picture; // name of picture to show
     private ArrayList<Arc> adjacentArcs;
 
-    public Node(String label){
+    Node(String label){
         this.label = label;
-        adjacentArcs = new ArrayList<Arc>();
+        adjacentArcs = new ArrayList<>();
     }
 
-    public void addAdjacent(Arc arc){
+    void addAdjacent(Arc arc){
         if(this.adjacentArcs.contains(arc)){
             return;
         }
@@ -36,11 +32,11 @@ public class Node {
     public boolean isQRNode(){
         return false;
     }
-    public String getLabel() {
+    String getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    void setLabel(String label) {
         this.label = label;
     }
 
@@ -48,7 +44,7 @@ public class Node {
         return floor;
     }
 
-    public void setFloor(int floor) {
+    void setFloor(int floor) {
         this.floor = floor;
     }
 
@@ -56,7 +52,7 @@ public class Node {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    void setPicture(String picture) {
         this.picture = picture;
     }
 
@@ -64,7 +60,7 @@ public class Node {
         return adjacentArcs;
     }
 
-    public void setAdjacentArcs(ArrayList<Arc> adjacentArcs) {
+    void setAdjacentArcs(ArrayList<Arc> adjacentArcs) {
         this.adjacentArcs = adjacentArcs;
     }
 }
