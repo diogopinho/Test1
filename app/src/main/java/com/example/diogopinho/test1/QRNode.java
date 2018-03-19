@@ -6,7 +6,7 @@ package com.example.diogopinho.test1;
 
 public class QRNode extends Node {
     public QRNode(String label) {
-        super(label);
+        super(label, 1);
     }
 
     public boolean isQRNode(){

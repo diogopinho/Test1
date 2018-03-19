@@ -14,7 +14,24 @@ import com.google.zxing.integration.android.IntentResult;
 public class MainActivity extends AppCompatActivity {
     TextView text1;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
+        Map map = new Map();
+        Node sala101 = new Node ("Sala 101");
+        sala101.setFloor(1);
+        Node sala102 = new Node("Sala 102");
+        sala102.setFloor(1);
+        Node pontoC11 = new Node("Ponto C11");
+        pontoC11.setFloor(1);
+        Node pontoC12 = new Node("Ponto C12");
+        pontoC12.setFloor(1);
+        map.addNode(sala101);
+        map.addNode(sala102);
+        map.addNode(pontoC11);
+        map.addNode(pontoC12);
+        map.addArc(pontoC11, sala101, 3);
+        map.addArc(sala101, sala102, 2);
+        map.addArc(sala102, pontoC12, 3);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button scan_btn = findViewById(R.id.scan_btn);
