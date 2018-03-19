@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-/**
- * Created by João Cardoso on 13/03/2018.
- */
+
 
 public class Map {
     private HashMap<String, Node> nodes;
