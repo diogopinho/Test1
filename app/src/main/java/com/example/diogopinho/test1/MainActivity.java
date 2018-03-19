@@ -50,6 +50,26 @@ public class MainActivity extends AppCompatActivity {
         text1 = findViewById(R.id.text1);
         final Activity activity = this;
 
+        Map map = new Map();
+
+        Node sala101 = new Node("Sala 101");
+        sala101.setFloor(1);
+        Node sala102 = new Node("Sala 102");
+        sala102.setFloor(1);
+        Node pontoC11 = new Node("Ponto C11");
+        pontoC11.setFloor(1);
+        Node pontoC12 = new Node("Ponto C12");
+        pontoC12.setFloor(1);
+
+        map.addNode(sala101);
+        map.addNode(sala102);
+        map.addNode(pontoC11);
+        map.addNode(pontoC12);
+
+        map.addArc(pontoC11, sala101, 3);
+        map.addArc(sala101, sala102, 2);
+        map.addArc(sala102, pontoC12, 3);
+
         scan_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
         if(result!=null) {
             if(result.getContents()==null) {
-                text1.setText("You cancelled the scanning");
+                text1.setText(R.string.scan_cancel);
             }
             else {
                 text1.setText(result.getContents());

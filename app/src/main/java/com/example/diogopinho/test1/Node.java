@@ -10,12 +10,12 @@ public class Node {
     private ArrayList<Arc> adjacentArcs;
     private boolean isQR;
 
-    public Node(String label){
+    Node(String label){
         this.label = label;
         adjacentArcs = new ArrayList<>();
     }
 
-    public void addAdjacent(Arc arc){
+    void addAdjacent(Arc arc){
         if(this.adjacentArcs.contains(arc)){
             return;
         }
@@ -34,7 +34,7 @@ public class Node {
         return label;
     }
 
-    public void setLabel(String label) {
+    void setLabel(String label) {
         this.label = label;
     }
 
@@ -42,7 +42,7 @@ public class Node {
         return floor;
     }
 
-    public void setFloor(int floor) {
+    void setFloor(int floor) {
         this.floor = floor;
     }
 
@@ -50,7 +50,7 @@ public class Node {
         return picture;
     }
 
-    public void setPicture(String picture) {
+    void setPicture(String picture) {
         this.picture = picture;
     }
 
@@ -58,7 +58,7 @@ public class Node {
         return adjacentArcs;
     }
 
-    public void setAdjacentArcs(ArrayList<Arc> adjacentArcs) {
+    void setAdjacentArcs(ArrayList<Arc> adjacentArcs) {
         this.adjacentArcs = adjacentArcs;
     }
 
