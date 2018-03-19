@@ -8,6 +8,7 @@ public class Node {
     private int floor;
     private String picture; // name of picture to show
     private ArrayList<Arc> adjacentArcs;
+    private boolean isQR;
 
     Node(String label){
         this.label = label;
@@ -29,10 +30,7 @@ public class Node {
         return this.adjacentArcs.size();
     }
 
-    public boolean isQRNode(){
-        return false;
-    }
-    String getLabel() {
+    public String getLabel() {
         return label;
     }
 
@@ -62,5 +60,13 @@ public class Node {
 
     void setAdjacentArcs(ArrayList<Arc> adjacentArcs) {
         this.adjacentArcs = adjacentArcs;
+    }
+
+    public boolean isQR() {
+        return isQR;
+    }
+
+    public void setQR(boolean QR) {
+        isQR = QR;
     }
 }

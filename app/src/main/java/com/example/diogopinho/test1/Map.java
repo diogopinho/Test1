@@ -3,7 +3,6 @@ package com.example.diogopinho.test1;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class Map {
     private HashMap<String, Node> nodes;
     private HashMap<Integer, Arc> arcs;
@@ -35,3 +34,4 @@ public class Map {
     }
 
 }
+
