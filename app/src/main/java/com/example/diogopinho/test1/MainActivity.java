@@ -41,6 +41,37 @@ public class MainActivity extends AppCompatActivity {
         map.addArc(sala101, sala102, 2);
         map.addArc(sala102, pontoC12, 3);
 
+        EdgeWeightedDigraph graph = new EdgeWeightedDigraph(7);
+        DirectedEdge d;
+        d = new DirectedEdge(1,2, 32);
+        graph.addEdge(d);
+        d = new DirectedEdge(1,4, 15);
+        graph.addEdge(d);
+        d = new DirectedEdge(2,3, 46);
+        graph.addEdge(d);
+        d = new DirectedEdge(2,1, 32);
+        graph.addEdge(d);
+        d = new DirectedEdge(3,2, 46);
+        graph.addEdge(d);
+        d = new DirectedEdge(3,4, 26);
+        graph.addEdge(d);
+        d = new DirectedEdge(3,4, 26);
+        graph.addEdge(d);
+        d = new DirectedEdge(4,3, 26);
+        graph.addEdge(d);
+        d = new DirectedEdge(4,1, 15);
+        graph.addEdge(d);
+        d = new DirectedEdge(4,5, 12);
+        graph.addEdge(d);
+        d = new DirectedEdge(5,4, 12);
+        graph.addEdge(d);
+        d = new DirectedEdge(5,6, 34);
+        graph.addEdge(d);
+        d = new DirectedEdge(6,5, 34);
+        graph.addEdge(d);
+        DijkstraSP a = new DijkstraSP(graph,2);
+        System.out.println(a.pathTo(6));
+
         ///////////////////////////////////////////////////////
 
         super.onCreate(savedInstanceState);
