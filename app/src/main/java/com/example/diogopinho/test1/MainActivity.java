@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         d = new DirectedEdge(2,1, 32);
         graph.addEdge(d);
         d = new DirectedEdge(3,2, 46);
+
         graph.addEdge(d);
         d = new DirectedEdge(3,4, 26);
         graph.addEdge(d);
