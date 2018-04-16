@@ -17,29 +17,44 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         Map map = new Map();
-        Node sala101 = new Node ("Sala 101");
-        sala101.setFloor(1);
-        sala101.setQR(false);
-        Node sala102 = new Node("Sala 102");
-        sala102.setFloor(1);
-        sala102.setQR(false);
-        Arc lig101_102 = new Arc(sala101,sala102,5);
-        sala101.addAdjacent(lig101_102);
-        sala102.addAdjacent(lig101_102);
-        System.out.println(sala101.getLabel());
-        System.out.println(sala101.getFloor());
-        
-        Node pontoC11 = new Node("Ponto C11");
-        pontoC11.setFloor(1);
-        Node pontoC12 = new Node("Ponto C12");
-        pontoC12.setFloor(1);
-        map.addNode(sala101);
-        map.addNode(sala102);
-        map.addNode(pontoC11);
-        map.addNode(pontoC12);
-        map.addArc(pontoC11, sala101, 3);
-        map.addArc(sala101, sala102, 2);
-        map.addArc(sala102, pontoC12, 3);
+        Node ponto11 = new Node ("ponto1.1");
+        ponto11.setFloor(1);
+        ponto11.setQR(true);
+        Node sala111 = new Node("Sala 111");
+        sala111.setFloor(1);
+        sala111.setQR(false);
+        Arc lig11_111 = new Arc(ponto11,sala111,7);
+        ponto11.addAdjacent(lig11_111);
+        sala111.addAdjacent(lig11_111);
+        map.addNode(ponto11);
+        map.addNode(sala111);
+        map.addArc(ponto11, sala111, 7);
+        Node sala110 = new Node ("Sala 110");
+        sala110.setFloor(1);
+        sala110.setQR(false);
+        map.addNode(sala110);
+        map.addArc(sala111, sala110,5);
+        Node sala109 = new Node ("Sala 109");
+        sala109.setFloor(1);
+        sala109.setQR(false);
+        map.addNode(sala109);
+        map.addArc(sala110, sala109,8);
+        Node sala108 = new Node ("Sala 108");
+        sala108.setFloor(1);
+        sala108.setQR(false);
+        map.addNode(sala108);
+        map.addArc(sala109, sala108,8);
+        Node ponto12 = new Node ("Ponto 1.2");
+        ponto12.setFloor(1);
+        ponto12.setQR(true);
+        map.addNode(ponto12);
+        map.addArc(sala108,ponto12,2);
+        Node sala107 = new Node ("Sala 107");
+        sala107.setFloor(1);
+        sala107.setQR(false);
+        map.addNode(sala107);
+        map.addArc(ponto12,sala107,2);
+
 
         EdgeWeightedDigraph graph = new EdgeWeightedDigraph(7);
         DirectedEdge d;
@@ -52,7 +67,6 @@ public class MainActivity extends AppCompatActivity {
         d = new DirectedEdge(2,1, 32);
         graph.addEdge(d);
         d = new DirectedEdge(3,2, 46);
-
         graph.addEdge(d);
         d = new DirectedEdge(3,4, 26);
         graph.addEdge(d);
