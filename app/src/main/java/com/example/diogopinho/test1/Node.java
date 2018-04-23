@@ -10,6 +10,13 @@ public class Node {
     private ArrayList<Arc> adjacentArcs;
     private boolean isQR;
 
+    public Node(String label, int floor, String picture, boolean isQR) {
+        this.label = label;
+        this.floor = floor;
+        this.picture = picture;
+        this.isQR = isQR;
+    }
+
     Node(String label){
         this.label = label;
         adjacentArcs = new ArrayList<>();
