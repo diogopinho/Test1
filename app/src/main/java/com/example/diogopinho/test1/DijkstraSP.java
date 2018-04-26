@@ -147,6 +147,16 @@ public class DijkstraSP {
         return path;
     }
 
+    public double pathTodistance(int v) {
+        double distance = 0;
+        validateVertex(v);
+        if (!hasPathTo(v)) return 0;
+        for (DirectedEdge e = edgeTo[v]; e != null; e = edgeTo[e.from()]) {
+            distance=distance+e.weight();
+        }
+        return distance;
+    }
+
 
     // check optimality conditions:
     // (i) for all edges e:            distTo[e.to()] <= distTo[e.from()] + e.weight()

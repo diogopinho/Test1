@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Node {
 
+    private int id;
     private String label;
     private int floor;
     private String picture; // name of picture to show
@@ -14,7 +15,7 @@ public class Node {
         this.label = label;
         this.floor = floor;
         this.picture = picture;
-        this.isQR = isQR;
+        this.setQR(isQR);
     }
 
     Node(String label){
@@ -75,5 +76,13 @@ public class Node {
 
     public void setQR(boolean QR) {
         isQR = QR;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
