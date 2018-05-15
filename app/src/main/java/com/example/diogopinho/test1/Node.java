@@ -7,16 +7,16 @@ public class Node {
     private int id;
     private String label;
     private int floor;
-    private String picture; // name of picture to show
+    //private String picture; // name of picture to show
     private ArrayList<Arc> adjacentArcs;
     private boolean isQR;
 
-    public Node(String label, int floor, String picture, boolean isQR) {
+    /*public Node(String label, int floor, String picture, boolean isQR) {
         this.label = label;
         this.floor = floor;
         this.picture = picture;
         this.setQR(isQR);
-    }
+    }*/
 
     Node(String label){
         this.label = label;
@@ -30,51 +30,51 @@ public class Node {
         this.adjacentArcs.add(arc);
     }
 
-    public Arc getAdjacentArc(int index){
+    /*public Arc getAdjacentArc(int index){
         return this.adjacentArcs.get(index);
-    }
+    }*/
 
-    public int getAdjacentSize(){
+    /*public int getAdjacentSize(){
         return this.adjacentArcs.size();
-    }
+    }*/
 
-    public String getLabel() {
+    String getLabel() {
         return label;
     }
 
-    void setLabel(String label) {
+   /* void setLabel(String label) {
         this.label = label;
-    }
+    }*/
 
-    public int getFloor() {
+   /* public int getFloor() {
         return floor;
-    }
+    }*/
 
     void setFloor(int floor) {
         this.floor = floor;
     }
 
-    public String getPicture() {
+    /*public String getPicture() {
         return picture;
-    }
+    }*/
 
-    void setPicture(String picture) {
+    /*void setPicture(String picture) {
         this.picture = picture;
-    }
+    }*/
 
-    public ArrayList<Arc> getAdjacentArcs() {
+    /*public ArrayList<Arc> getAdjacentArcs() {
         return adjacentArcs;
-    }
+    }*/
 
-    void setAdjacentArcs(ArrayList<Arc> adjacentArcs) {
+    /*void setAdjacentArcs(ArrayList<Arc> adjacentArcs) {
         this.adjacentArcs = adjacentArcs;
-    }
+    }*/
 
-    public boolean isQR() {
+    boolean isQR() {
         return isQR;
     }
 
-    public void setQR(boolean QR) {
+    void setQR(boolean QR) {
         isQR = QR;
     }
 
