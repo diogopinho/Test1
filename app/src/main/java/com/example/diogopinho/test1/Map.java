@@ -51,11 +51,17 @@ class Map {
         return 0;
     }
 
-    ArrayList<Arc> findArc(int id) {
+    ArrayList<Arc> findArc(int id, int id2) {
         ArrayList <Arc> b = new ArrayList <>();
         for (int i=1; i<=arcs.size();i++){
             if (arcs.get(i).getNode1().getId()==id){
-                b.add(arcs.get(i));
+                if (arcs.get(i).getNode2().getId()==id2) {
+                    b.add(arcs.get(i));
+                }
+            } else if (arcs.get(i).getNode2().getId()==id){
+                if (arcs.get(i).getNode1().getId()==id2) {
+                    b.add(arcs.get(i));
+                }
             }
         }
         return b;
@@ -443,6 +449,7 @@ class Map {
         graph.addEdge(d);
         d = new DirectedEdge(24,23, 6);
         graph.addEdge(d);
+        map.addArc(ponto11, ponto14, 15,90);
     }
 
 
