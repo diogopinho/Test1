@@ -3,16 +3,19 @@ package com.example.diogopinho.test1;
 import android.annotation.SuppressLint;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 class Map {
     private HashMap<Integer, Node> nodes;
     private HashMap<Integer, Arc> arcs;
+    private HashMap<String, Prof> professores;
 
     @SuppressLint("UseSparseArrays")
     Map(){
         this.nodes = new HashMap<>();
         this.arcs = new HashMap<>();
+        this.professores = new HashMap<>();
     }
 
     /*public Map(ArrayList<Node> nodes){
@@ -40,6 +43,14 @@ class Map {
 
     private void addNode(Node node){
         nodes.put(node.getId(), node);
+    }
+
+    void addProf(Prof prof){
+        professores.put(prof.getNome(), prof);
+    }
+
+    Prof getProf(String nome){
+        return professores.get(nome);
     }
 
     private int findNode(String nome){
@@ -450,9 +461,54 @@ class Map {
         d = new DirectedEdge(24,23, 6);
         graph.addEdge(d);
         map.addArc(ponto11, ponto14, 15,90);
+
+
+        Date d1 = new Date(0,0,0,14,00);
+        Date d2 = new Date(0,0,0,21,00);
+        Prof p = new Prof("Feliz Gouveia", "Gabinete 6");
+        p.add_tempo("Quinta-Feira",d1,d2);
+        map.addProf(p);
     }
 
-
+    void direcoes (String partida, String chegada,EdgeWeightedDigraph graph, Map map){
+        int id1 = map.get_id_node(partida);
+        int id2 = map.get_id_node(chegada);
+        DijkstraSP a = new DijkstraSP(graph,id1);
+        Stack<DirectedEdge> path = (Stack<DirectedEdge>) a.pathTo(id2);
+        for (int i =0; i<= path.size();i=1){
+            //System.out.println(path.peek().from());
+            int aux = path.peek().from();
+            ArrayList<Arc> arc = new ArrayList<>();
+            if ((map.findNodeId(path.peek().from()).isQR()==true) || i == 0 || path.size()==1) {
+                arc = map.findArc(aux, path.peek().to());
+                for (int j = 0; j < arc.size(); j++) {
+                    //System.out.println("IS QR");
+                    if (i==0){
+                        System.out.println("The Frist");
+                    } else if (path.size()==1){
+                        System.out.println("The Last");
+                    } else{
+                        System.out.println("IS QR");
+                    }
+                    if (arc.get(j).getNode1().getId()==aux) {
+                        System.out.println(arc.get(j).getNode1().getId() + " - > " + arc.get(j).getNode2().getId() + " = " + arc.get(j).getOrientacion());
+                    }
+                    else{
+                        System.out.print(arc.get(j).getNode2().getId() + " - > " + arc.get(j).getNode1().getId());
+                        if (arc.get(j).getOrientacion()>=180){
+                            System.out.println(" = " + (arc.get(j).getOrientacion()-180));
+                        }else{
+                            System.out.println(" = " + (arc.get(j).getOrientacion()+180));
+                        }
+                    }
+                }
+            }
+            path.pop();
+            //System.out.println(map.findNodeId(path.pop().from()).isQR());
+        }
+        System.out.println(a.pathTo(id2)+"\n"+a.pathTodistance(id2));
+        //map.melhor_caminho(partida,chegada,map,a,graph);
+    }
 }
 
 
