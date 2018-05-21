@@ -25,7 +25,7 @@ class Map {
             this.nodes.put(n.getId(), n);
         }
     }*/
-     public Node findNodeId(int id){
+    private Node findNodeId(int id){
         for (int i=1; i<nodes.size();i++){
             if (nodes.get(i).getId()==id){
                 return nodes.get(i);
@@ -34,7 +34,7 @@ class Map {
         return null;
     }
 
-    void addArc(Node no1, Node no2, int distance, int orientacion){
+    private void addArc(Node no1, Node no2, int distance, int orientacion){
         Arc arc = new Arc(no1, no2, distance, orientacion);
         arcs.put(arcs.size()+1, arc);
         no1.addAdjacent(arc);
@@ -45,7 +45,7 @@ class Map {
         nodes.put(node.getId(), node);
     }
 
-    void addProf(Prof prof){
+    private void addProf(Prof prof){
         professores.put(prof.getNome(), prof);
     }
 
@@ -53,16 +53,16 @@ class Map {
         return professores.get(nome);
     }
 
-    private int findNode(String nome){
+    /*private int findNode(String nome){
         for (int i=1; i<nodes.size();i++){
             if (nodes.get(i).getLabel().equals(nome)){
                 return i;
             }
         }
         return 0;
-    }
+    }*/
 
-    ArrayList<Arc> findArc(int id, int id2) {
+    private ArrayList<Arc> findArc(int id, int id2) {
         ArrayList <Arc> b = new ArrayList <>();
         for (int i=1; i<=arcs.size();i++){
             if (arcs.get(i).getNode1().getId()==id){
@@ -79,7 +79,7 @@ class Map {
     }
 
 
-    ArrayList<Integer> findArc(String nome){
+    /*private ArrayList<Integer> findArc(String nome){
         ArrayList <Node> a = findNextQR(nome);
         ArrayList <Integer> b = new ArrayList <>();
         int soma = 0;
@@ -123,9 +123,9 @@ class Map {
             //System.out.println("entrei4");
         }
         return b;
-    }
+    }*/
 
-    ArrayList <Node> findNextQR (String nome){
+    /*private ArrayList <Node> findNextQR(String nome){
         int i = findNode(nome);
         ArrayList <Node> a = new ArrayList <>();
         //System.out.println(nodes.size());
@@ -146,9 +146,9 @@ class Map {
         }
         //System.out.println(a);
         return a;
-    }
+    }*/
 
-    int get_id_node (String node){
+    private int get_id_node(String node){
         for (int i=1; i<nodes.size();i++){
             if (nodes.get(i).getLabel().equals(node)){
                 return i;
@@ -157,7 +157,7 @@ class Map {
         return 0;
     }
 
-    void melhor_caminho (String partida, String chegada, Map map, DijkstraSP a, EdgeWeightedDigraph graph) {
+    /*void melhor_caminho (String partida, String chegada, Map map, DijkstraSP a, EdgeWeightedDigraph graph) {
         //System.out.println(map.findNode(partida));
         ArrayList <Node> Qr_partida  = map.findNextQR(partida);
         //System.out.println(Qr_partida.size());
@@ -174,9 +174,9 @@ class Map {
             System.out.println("Mesma Linha");
         }
 
-    }
+    }*/
 
-    void caminho_curto_diferente (ArrayList <Node> Qr_partida, ArrayList <Node> Qr_chegada,ArrayList <Integer> dis_patida,ArrayList <Integer> dis_chegada,DijkstraSP a, EdgeWeightedDigraph graph) {
+    /*void caminho_curto_diferente (ArrayList <Node> Qr_partida, ArrayList <Node> Qr_chegada,ArrayList <Integer> dis_patida,ArrayList <Integer> dis_chegada,DijkstraSP a, EdgeWeightedDigraph graph) {
 
         ArrayList<Node> tamanhos = new ArrayList<>();
         double max = 0;
@@ -200,11 +200,11 @@ class Map {
         System.out.println("O codigo QR de partida é: " + tamanhos.get(0).getLabel());
         System.out.println();
         System.out.println("O codigo QR de chegada é: " + tamanhos.get(1).getLabel());
-    }
+    }*/
 
 
 
-    int verifica_QR (ArrayList <Node> Qr_partida, ArrayList <Node> Qr_chegada){
+    /*int verifica_QR (ArrayList <Node> Qr_partida, ArrayList <Node> Qr_chegada){
         int count=0;
        for (int i=0;i<Qr_partida.size();i++){
            for (int j=0;j<Qr_chegada.size();j++){
@@ -214,7 +214,7 @@ class Map {
            }
        }
        return count;
-    }
+    }*/
 
     void criar_mapa (Map map, EdgeWeightedDigraph graph){
         DirectedEdge d;
@@ -464,9 +464,12 @@ class Map {
 
 
         Date d1 = new Date(0,0,0,14,00);
-        Date d2 = new Date(0,0,0,21,00);
+        Date d2 = new Date(0,0,0,15,00);
         Prof p = new Prof("Feliz Gouveia", "Gabinete 6");
-        p.add_tempo("Quinta-Feira",d1,d2);
+        Prof p2 = new Prof("Feliz2 Gouveia", "Gabinete 6");
+        p2.add_tempo("Segunda-Feira",d1,d2);
+        p.add_tempo("Segunda-Feira",d1,d2);
+        p.add_tempo("Sexta-Feira",d1,d2);
         map.addProf(p);
     }
 
@@ -479,7 +482,7 @@ class Map {
             //System.out.println(path.peek().from());
             int aux = path.peek().from();
             ArrayList<Arc> arc = new ArrayList<>();
-            if ((map.findNodeId(path.peek().from()).isQR()==true) || i == 0 || path.size()==1) {
+            if ((map.findNodeId(path.peek().from()).isQR()) || i == 0 || path.size()==1) {
                 arc = map.findArc(aux, path.peek().to());
                 for (int j = 0; j < arc.size(); j++) {
                     //System.out.println("IS QR");
