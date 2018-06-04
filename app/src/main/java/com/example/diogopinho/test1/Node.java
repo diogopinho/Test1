@@ -7,16 +7,16 @@ public class Node {
     private int id;
     private String label;
     private int floor;
-    //private String picture; // name of picture to show
+    private String picture; // name of picture to show
     private ArrayList<Arc> adjacentArcs;
     private boolean isQR;
 
-    /*public Node(String label, int floor, String picture, boolean isQR) {
+    public Node(String label, int floor, String picture, boolean isQR) {
         this.label = label;
         this.floor = floor;
         this.picture = picture;
         this.setQR(isQR);
-    }*/
+    }
 
     Node(String label){
         this.label = label;

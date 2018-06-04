@@ -295,7 +295,7 @@ class Map {
         A2.setFloor(1);
         A2.setQR(false);
         map.addNode(A2);
-        map.addArc(sala107,A2,2,90);
+        map.addArc(sala107,A2,10,90);
         d = new DirectedEdge(7,8, 2);
         graph.addEdge(d);
         d = new DirectedEdge(8,7, 2);
@@ -305,7 +305,7 @@ class Map {
         sala101.setFloor(1);
         sala101.setQR(false);
         map.addNode(sala101);
-        map.addArc(A2,sala101,16,90);
+        map.addArc(A2,sala101,10,90);
         d = new DirectedEdge(8,9, 16);
         graph.addEdge(d);
         d = new DirectedEdge(9,8, 16);
@@ -315,6 +315,11 @@ class Map {
         ponto13.setFloor(1);
         ponto13.setQR(true);
         map.addNode(ponto13);
+        map.addArc(ponto12,ponto13,22,90);
+        d = new DirectedEdge(6,10, 20);
+        graph.addEdge(d);
+        d = new DirectedEdge(10,6, 20);
+        graph.addEdge(d);
         map.addArc(sala101,ponto13,2,0);
         d = new DirectedEdge(9,10, 2);
         graph.addEdge(d);
