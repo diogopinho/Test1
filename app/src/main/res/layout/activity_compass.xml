@@ -11,14 +11,44 @@
         android:layout_centerHorizontal="true"
         android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:text="Current degrees: 0.0 " />
+        android:text="" />
 
     <ImageView
         android:id="@+id/imageViewCompass"
-        android:layout_width="300sp"
-        android:layout_height="300sp"
-        android:src="@drawable/arrow"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:layout_below="@+id/tvHeading"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/arrow" />
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="12dp"
+        android:text="Next" />
+
+    <Button
+        android:id="@+id/scan_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageViewCompass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:text="Ler Código QR" />
+
+    <Button
+        android:id="@+id/done_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/next_btn"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="8dp"
+        android:text="Cheguei" />
 
 </RelativeLayout>

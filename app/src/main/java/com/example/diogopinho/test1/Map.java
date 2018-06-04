@@ -25,7 +25,7 @@ class Map {
             this.nodes.put(n.getId(), n);
         }
     }*/
-    private Node findNodeId(int id){
+    public Node findNodeId(int id){
         for (int i=1; i<nodes.size();i++){
             if (nodes.get(i).getId()==id){
                 return nodes.get(i);
@@ -62,7 +62,7 @@ class Map {
         return 0;
     }*/
 
-    private ArrayList<Arc> findArc(int id, int id2) {
+    ArrayList<Arc> findArc(int id, int id2) {
         ArrayList <Arc> b = new ArrayList <>();
         for (int i=1; i<=arcs.size();i++){
             if (arcs.get(i).getNode1().getId()==id){
@@ -222,7 +222,7 @@ class Map {
         graph.addEdge(d);
         d = new DirectedEdge(14,1, 15);
         graph.addEdge(d);
-        Node ponto11 = new Node ("ponto1.1");
+        Node ponto11 = new Node ("Ponto 1.1");
         ponto11.setFloor(1);
         ponto11.setQR(true);
         ponto11.setId(1);
@@ -473,7 +473,7 @@ class Map {
         map.addProf(p);
     }
 
-    void direcoes (String partida, String chegada,EdgeWeightedDigraph graph, Map map){
+    Iterable<DirectedEdge> direcoes (String partida, String chegada,EdgeWeightedDigraph graph, Map map){
         int id1 = map.get_id_node(partida);
         int id2 = map.get_id_node(chegada);
         DijkstraSP a = new DijkstraSP(graph,id1);
@@ -510,6 +510,7 @@ class Map {
             //System.out.println(map.findNodeId(path.pop().from()).isQR());
         }
         System.out.println(a.pathTo(id2)+"\n"+a.pathTodistance(id2));
+        return a.pathTo(id2);
         //map.melhor_caminho(partida,chegada,map,a,graph);
     }
 }

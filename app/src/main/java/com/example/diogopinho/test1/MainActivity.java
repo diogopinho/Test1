@@ -18,17 +18,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
+
         Map map = new Map();
         EdgeWeightedDigraph graph = new EdgeWeightedDigraph(26);
-        String partida = "Sala 111";
-        //String chegada = "Gabinete 5";
         map.criar_mapa(map,graph);
-        System.out.println(map.getProf("Feliz Gouveia").verifica_atendimento());
-        System.out.println(map.getProf("Feliz Gouveia").getNome_Sala());
-        //map.direcoes(partida, chegada,graph,a,map);
-        map.direcoes(partida, map.getProf("Feliz Gouveia").getNome_Sala(),graph, map);
 
-        ///////////////////////////////////////////////////////
+        Global global = (Global)getApplicationContext();
+        global.setMap(map);
+        global.setGraph(graph);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -37,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         text1 = findViewById(R.id.text1);
         final Activity activity = this;
 
+        startActivity(new Intent(this,Selection.class));
 
 
         scan_btn.setOnClickListener(new View.OnClickListener() {
