@@ -144,8 +144,8 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
         int count=(int)de.weight();
         for (DirectedEdge de: path) {
             if(map.findNodeId(de.from()).isQR()) {
-                infoTextAboutDegrees.setText("Siga a seta durante " + count + " passos ate a " + map.findNodeId(de.from()).getLabel());
-                return count;
+                    infoTextAboutDegrees.setText("Siga a seta durante " + count + " passos ate a " + map.findNodeId(de.from()).getLabel());
+                    return count;
             }
             count+=(int)de.weight();
         }

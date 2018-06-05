@@ -12,14 +12,14 @@ public class Node {
     private boolean isQR;
 
     public Node(String label, int floor, String picture, boolean isQR) {
-        this.label = label;
+        this.setLabel(label);
         this.floor = floor;
         this.picture = picture;
         this.setQR(isQR);
     }
 
     Node(String label){
-        this.label = label;
+        this.setLabel(label);
         adjacentArcs = new ArrayList<>();
     }
 
@@ -46,9 +46,9 @@ public class Node {
         this.label = label;
     }*/
 
-   /* public int getFloor() {
+    public int getFloor() {
         return floor;
-    }*/
+    }
 
     void setFloor(int floor) {
         this.floor = floor;
@@ -84,5 +84,9 @@ public class Node {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 }

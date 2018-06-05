@@ -26,7 +26,7 @@ class Map {
         }
     }*/
     public Node findNodeId(int id){
-        for (int i=1; i<nodes.size();i++){
+        for (int i=1; i<=nodes.size();i++){
             if (nodes.get(i).getId()==id){
                 return nodes.get(i);
             }
@@ -149,7 +149,7 @@ class Map {
     }*/
 
     private int get_id_node(String node){
-        for (int i=1; i<nodes.size();i++){
+        for (int i=1; i<=nodes.size();i++){
             if (nodes.get(i).getLabel().equals(node)){
                 return i;
             }
@@ -466,6 +466,16 @@ class Map {
         d = new DirectedEdge(24,23, 6);
         graph.addEdge(d);
         map.addArc(ponto11, ponto14, 15,90);
+        Node ponto21 = new Node ("Ponto 2.1");
+        ponto21.setId(25);
+        ponto21.setFloor(2);
+        ponto21.setQR(true);
+        map.addNode(ponto21);
+        map.addArc(ponto15,ponto21,13,220);
+        d = new DirectedEdge(25,17, 13);
+        graph.addEdge(d);
+        d = new DirectedEdge(17,25, 13);
+        graph.addEdge(d);
 
 
         Date d1 = new Date(0,0,0,14,00);
@@ -481,6 +491,7 @@ class Map {
     Iterable<DirectedEdge> direcoes (String partida, String chegada,EdgeWeightedDigraph graph, Map map){
         int id1 = map.get_id_node(partida);
         int id2 = map.get_id_node(chegada);
+        System.out.println(id2);
         DijkstraSP a = new DijkstraSP(graph,id1);
         Stack<DirectedEdge> path = (Stack<DirectedEdge>) a.pathTo(id2);
         for (int i =0; i<= path.size();i=1){

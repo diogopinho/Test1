@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         Map map = new Map();
-        EdgeWeightedDigraph graph = new EdgeWeightedDigraph(26);
+        EdgeWeightedDigraph graph = new EdgeWeightedDigraph(35);
         map.criar_mapa(map,graph);
+        //map.direcoes("Gabinete 1","Ponto 2.1", graph, map);
 
         Global global = (Global)getApplicationContext();
         global.setMap(map);
