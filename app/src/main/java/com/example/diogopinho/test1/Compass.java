@@ -12,9 +12,11 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -32,6 +34,9 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
     Global global;
     EdgeWeightedDigraph graph;
     String destino;
+    int auxId;
+
+    ToggleButton show_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,9 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
         Button next_btn = findViewById(R.id.next_btn);
         Button scan_btn = findViewById(R.id.scan_btn);
         Button done_btn = findViewById(R.id.done_btn);
+        show_btn = findViewById(R.id.show_btn);
+        final ImageView pontoImagem = findViewById(R.id.imageView2);
+        final FrameLayout imageFrame = findViewById(R.id.imageFrame);
 
         manager = (SensorManager) getSystemService(SENSOR_SERVICE);
         global = (Global)getApplicationContext();
@@ -50,7 +58,6 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
         path = (Stack<DirectedEdge>) global.getDirection();
         de = path.pop();
 
-        Arc arc = map.findArc(de.from(), de.to()).get(0);
         getPassos();
         getArcOrientation();
 
@@ -97,6 +104,21 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
                 Compass.this.onBackPressed();
             }
         });
+
+        show_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(show_btn.isChecked()) {
+                    String auxDestino= "p"+String.valueOf(auxId);
+                    int resourceId = getResources().getIdentifier(auxDestino,"drawable",getPackageName());
+                    pontoImagem.setImageResource(resourceId);
+                    imageFrame.setVisibility(View.VISIBLE);
+                } else {
+                    imageFrame.setVisibility(View.GONE);
+                }
+            }
+        });
+
     }
 
     @Override
@@ -144,6 +166,7 @@ public class Compass extends AppCompatActivity implements SensorEventListener {
         int count=(int)de.weight();
         for (DirectedEdge de: path) {
             if(map.findNodeId(de.from()).isQR()) {
+                    auxId=map.findNodeId(de.from()).getId();
                     infoTextAboutDegrees.setText("Siga a seta durante " + count + " passos ate a " + map.findNodeId(de.from()).getLabel());
                     return count;
             }

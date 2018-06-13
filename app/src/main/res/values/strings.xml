@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test1</string>
+    <string name="app_name">Find You in UFP</string>
     <string name="scan">Scan</string>
     <string name="which_way_is_north">Which way is North</string>
     <string name="scan_cancel">You cancelled the scanning</string>
